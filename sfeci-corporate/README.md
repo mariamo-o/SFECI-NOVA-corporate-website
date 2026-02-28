@@ -656,5 +656,4 @@ sfeci-corporate/               ← Frontend (Vanilla HTML/CSS/JS)
 
 *NOVA Platform — SFECI B2B Trade Infrastructure*  
 *© 2026 SFECI. All rights reserved. Registered in France.*  
-*Platform Phase: Phase 3 Complete*  
-*Last updated: Today*
+
