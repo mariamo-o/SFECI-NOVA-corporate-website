@@ -1,89 +1,127 @@
-# NOVA Platform — SFECI Executive Overview
+# SFECI NOVA Platform — Operations & Deployment Guide
 
-> **A Secure, Scalable, AI-Driven International B2B & Dropshipping Trade Infrastructure.**
+> **Master Workspace Documentation for deploying and operating the complete NOVA Platform (Frontend + Backend).**
 
-This workspace contains the complete, production-grade source code for the NOVA Platform, consisting of two primary repositories that work seamlessly together.
-
-| Component | Directory | Purpose | Stack |
-|---|---|---|---|
-| **Backend Infrastructure** | [`/nova-backend`](./nova-backend/) | The core trade engine, database, and API. | Node.js, Express, PostgreSQL 16, Knex, Docker |
-| **Corporate Frontend** | [`/sfeci-corporate`](./sfeci-corporate/) | The public-facing B2B corporate website. | Vanilla HTML/JS, Nginx, Responsive CSS |
+This workspace contains two distinct repositories designed to run together via Docker:
+1. `nova-backend/` (Node.js API + PostgreSQL)
+2. `sfeci-corporate/` (Static Frontend + Nginx proxy)
 
 ---
 
-## 🎯 Architectural Compliance & Feature Validation
+## 🚀 Quick Start (Local Run via Docker)
 
-The platform has been meticulously engineered to meet the 14-point executive directive. Here is the implementation matrix confirming the platform's evolution from prototype to a governed, autonomous trade infrastructure.
+The fastest way to launch the complete platform is using the bundled Docker Compose stack inside the `nova-backend` directory, which mounts both repositories.
 
-### 1️⃣ Critical Launch-Blocking Deficiencies (P0) — ✅ VALIDATED
-- **Production Backend:** Fully operational Node.js REST API with PostgreSQL 16.
-- **Transactional Integrity:** Fully enforced via Knex ORM with full UUID-based relational models.
-- **Security architecture:** JWT (access/refresh), RBAC, strict Helmet CSP/HSTS, CSRF double-submit cookies, Rate Limiting, and **Speakeasy Two-Factor Authentication (2FA)** for privileged accounts.
+### Prerequisites
+- Docker Desktop (Windows/Mac) or Docker Engine + Docker Compose (Linux)
+- Node.js v20+ (for local, non-Docker development only)
 
-### 2️⃣ Data Architecture — ✅ VALIDATED
-- Cross-entity data isolation enforced via **Multi-Tenancy Middleware** (`X-Tenant-ID` / Subdomains).
-- Data lineage tracking built into state-machine driven migrations (Orders, RFQs, Disputes, AI Decisions).
+### Standard Boot Sequence
 
-### 3️⃣ Core Marketplace Engine — ✅ VALIDATED
-- **Vendor Onboarding:** File handling (`multer`), AML/KYC abstractions, automated Risk Scoring, and Board Approvals.
-- **Product & Catalog:** Fully functional sector-based category API with SKU and inventory sync.
-- **RFQ Engine:** Complex state machine tracking (Request → Quotes → Select → Order).
-- **Trade Lifecycle:** Quote → Contract → Stripe Escrow → Ship → Invoice Auto-generation → Settled.
+Open your terminal (PowerShell / Bash) and run:
 
-### 4️⃣ Payment & Escrow Governance — ✅ VALIDATED
-- State-driven escrow service abstracted for Stripe Connect (Initiate → Hold → Release/Refund).
-- Auto-generation of Invoices, Credit Notes, and T+2 settlement cycles.
+```bash
+# 1. Enter the backend directory where the docker-compose file lives
+cd nova-backend
 
-### 5️⃣ Marketplace Liquidity Strategy — ✅ VALIDATED
-- **Seeding Baseline:** Zero cold-start. Infrastructure contains seed migrations loading **25 categories**, **15 vendors** across 5 sectors, and **150 SKUs** on first boot.
+# 2. Start the database, backend API, and frontend proxy in background mode
+docker-compose up -d
 
-### 6️⃣ API Strategy — ✅ VALIDATED
-- Versioned endpoints (`/api/v1/*`), strict OWASP rate-limiting per IP (auth vs. api routes).
-
-### 7️⃣ Platform Analytics & Trade Intelligence — ✅ VALIDATED
-- Event-driven analytics pipeline tracking vendor performance, buyer behavior, RFQ funnel metrics, and aggregated GMV revenue tracking per sector.
-
-### 8️⃣ AI Operational Governance — ✅ VALIDATED
-- Categorization engine secured with strict governance (`src/services/aiGovernance.service.js`).
-- Confidence thresholds (< 0.75 triggers escalation), Explainability reporting, Human SLA Overrides, Bias monitoring reports, and full Decision Audit Logging.
-
-### 9️⃣ SLA & Operational Targets — ✅ VALIDATED
-- Automated CRON pipelines tracking RFQ SLA expiry, Dispute deadlining, AI human-override SLAs, and Overdue Invoice tagging.
-
-### 🔟 Multi-Entity & Multi-Brand Architecture — ✅ VALIDATED
-- Native architecture supports limitless parent/child entities via the `tenants` schema injection on every entity table.
-
-### 1️⃣1️⃣ Governance Board Structure — ✅ VALIDATED
-- Strict RBAC models map exactly to: `super_admin` (Platform Operator), `compliance_officer` (Reviewer), `buyer`, and `vendor`. 
-
-### 1️⃣2️⃣ Growth Engine — 🟡 PARTIAL (Phase 4)
-- Backend structured for scalability; CRM integrations and Marketing AI are plotted for Phase 4 deployment.
-
-### 1️⃣3️⃣ Cloud-Native Architecture & Observability — ✅ VALIDATED
-- Configured docker-compose stack. 
-- Integrated **Prometheus Metrics** (`/metrics`), Kubernetes `/readiness` HTTP probes, and JSON-based deep `/health/detailed` endpoints.
-
-### 1️⃣4️⃣ Production Readiness Checklist — ✅ COMPLETED
-The infrastructure is ready. The remaining steps before taking this to public networks involve AWS/Cloudflare infrastructure provisioning (WAF, SSL Certs, Secrets Manager).
-
----
-
-## 🚀 How to Launch the Full Stack Locally
-
-If you have Docker Desktop installed on your machine, you can launch the entire ecosystem in one command:
-
-```powershell
-# 1. Enter the backend directory
-cd ./nova-backend
-
-# 2. Start the Docker Compose stack
-docker-compose up --build -d
-
-# 3. View the corporate website
-# Open http://localhost in your browser
-
-# 4. View Backend Health
-# Open http://localhost/health/detailed
+# 3. View the logs to ensure the API started successfully
+docker logs -f nova_api
 ```
 
-> 📖 *For deeper technical integration instructions, read the `README.md` file located inside the `nova-backend/` folder.*
+### Accessing the Platform
+- **Corporate Website (Frontend):** [http://localhost](http://localhost)
+- **API Base URL:** `http://localhost/api/v1`
+- **System Health Dashboard:** `http://localhost/health/detailed`
+- **Prometheus Metrics:** `http://localhost/metrics`
+
+---
+
+## 🗄️ Database Operations
+
+The platform uses **Knex.js** for database migrations and seeding. When you boot the Docker stack for the first time, it will automatically create the database structure, but you need to run seeds to populate it with test data and liquidity baseline data.
+
+### 1. Seeding Data (First Time Only)
+
+To populate the database with the pre-configured 25 categories, 15 vendors, and test accounts:
+
+```bash
+# Exec into the running API container and trigger the seed command
+docker-compose exec api npm run seed
+
+# Expected output:
+# "Migrating..."
+# "Liquidity baseline seeded: 25 categories, 15 vendors..."
+```
+
+> **Test Accounts Created via Seed:**
+> - Admin: `admin@sfeci.com` / `Admin@1234!`
+> - Buyer: `buyer@acme.com` / `Buyer@1234!`
+> - Vendor: `vendor@techcorp.com` / `Vendor@1234!`
+
+### 2. Running Migrations Manually
+
+If you pull new code that contains database changes:
+```bash
+docker-compose exec api npm run migrate
+```
+
+### 3. Resetting the Database (Wiping everything)
+
+```bash
+# Stop containers and DESTROY the database volume
+docker-compose down -v
+
+# Rebuild containers cleanly
+docker-compose up --build -d
+```
+
+---
+
+## ⚙️ Environment Variables & Configuration
+
+The platform is fully configured via `.env` files. Inside the `nova-backend/` folder, copy `.env.example` to `.env` (if not already done).
+
+### Critical Variables:
+
+| Variable | Purpose | Default / Example |
+|---|---|---|
+| `JWT_ACCESS_SECRET` | Secret key for signing auth tokens | *(Generate a 32-char complex string)* |
+| `STRIPE_SECRET_KEY` | API key for Escrow/Payments | `sk_test_...` |
+| `CONFIDENCE_THRESHOLD` | AI score limit before human escalation | `0.75` (75%) |
+| `RFQ_SLA_HOURS` | Timers for Automated State Machines | `48` |
+
+---
+
+## 🛠️ Modifying the UI (Frontend Development)
+
+If you need to make changes to the visual interface:
+
+1. Edit files inside `/sfeci-corporate/` (`index.html`, `index.css`, `script.js`).
+2. **You do NOT need to restart Docker.** The docker-compose stack maps this folder directly into the Nginx container as a read-only volume (`/usr/share/nginx/html:ro`).
+3. Simply save your files and **Refresh your browser**.
+
+---
+
+## 🩺 System Observability
+
+The platform exports real-time health and metrics data. 
+
+To easily monitor the system while in operation, check these endpoints from your browser or monitoring tools:
+
+- **Liveness Probe (Kubernetes):** `GET http://localhost/readiness` (Returns 200 OK)
+- **Deep Health Report:** `GET http://localhost/health/detailed` (Checks Database connection, External APIs, and Storage)
+- **Prometheus Metrics:** `GET http://localhost/metrics` (Outputs raw metrics for CPU, Memory, Latency, and Error rates formatted for Prometheus scraping)
+
+---
+
+## � Troubleshooting
+
+| Error / Symptom | Solution |
+|---|---|
+| `dependency failed to start: container nova_api is unhealthy` | Usually means the PostgreSQL database didn't start fast enough or port `5432` is blocked. Check `docker logs nova_db`. |
+| API returns `502 Bad Gateway` | The API container (`nova_api`) crashed. View logs with `cd nova-backend && docker logs nova_api`. |
+| Migrations throw `relation already exists` | The database was partially migrated. Reset it with `docker-compose down -v` and run again. |
+| Cannot Login (401 Unauthorized) | Ensure you have run the seed command: `docker-compose exec api npm run seed` to create the test accounts. |
