@@ -568,16 +568,6 @@ nova-backend/
 | Secrets | Environment variables only, never in source code |
 | Compliance | AML sanctions screening, KYC identity verification |
 
-### Reporting Security Issues
-Contact: **security@sfeci.com**
-
----
-
-## License
-
-Proprietary — SFECI © 2026. All rights reserved. 
-Registered in France | 15 Avenue des Champs-Élysées, 75008 Paris
-
 ---
 
 ## Phase 3 — AI Governance, Analytics & Enterprise Readiness
