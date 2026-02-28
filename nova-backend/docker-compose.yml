@@ -1,0 +1,140 @@
+# ============================================================
+# NOVA Platform — Docker Compose (Local / Dev-Production Parity)
+# Services: db (PostgreSQL 16), api (Node.js), nginx (reverse proxy)
+#
+# Windows usage:
+#   docker-compose up --build
+#   Open: http://localhost
+#   API:  http://localhost/api/v1
+#   Health: http://localhost/health
+#
+# Test accounts (after first run with RUN_SEEDS=true):
+#   admin@sfeci.com / Admin@1234!
+#   buyer@acme.com  / Buyer@1234!
+#   vendor@techcorp.com / Vendor@1234!
+# ============================================================
+version: '3.9'
+
+services:
+  # ---- PostgreSQL 16 ----
+  db:
+    image: postgres:16-alpine
+    container_name: nova_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${DB_NAME:-nova_db}
+      POSTGRES_USER: ${DB_USER:-nova_user}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-dev_password}
+      PGDATA: /var/lib/postgresql/data/pgdata
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U ${DB_USER:-nova_user} -d ${DB_NAME:-nova_db}" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    networks:
+      - nova_network
+
+  # ---- Node.js API ----
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production
+    container_name: nova_api
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      NODE_ENV: ${NODE_ENV:-development}
+      PORT: 3001
+      API_VERSION: ${API_VERSION:-v1}
+      # Docker internal networking — api container resolves "db" via nova_network
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_NAME: ${DB_NAME:-nova_db}
+      DB_USER: ${DB_USER:-nova_user}
+      DB_PASSWORD: ${DB_PASSWORD:-dev_password}
+      DB_POOL_MIN: ${DB_POOL_MIN:-2}
+      DB_POOL_MAX: ${DB_POOL_MAX:-10}
+      # JWT
+      JWT_ACCESS_SECRET: ${JWT_ACCESS_SECRET:-dev_access_secret_must_be_32chars_xx}
+      JWT_REFRESH_SECRET: ${JWT_REFRESH_SECRET:-dev_refresh_secret_must_be_32chars_x}
+      JWT_ACCESS_EXPIRES: ${JWT_ACCESS_EXPIRES:-15m}
+      JWT_REFRESH_EXPIRES: ${JWT_REFRESH_EXPIRES:-7d}
+      # Cookies & CSRF
+      COOKIE_SECRET: ${COOKIE_SECRET:-dev_cookie_secret_must_be_32chars_xx}
+      COOKIE_SECURE: ${COOKIE_SECURE:-false}
+      COOKIE_SAME_SITE: ${COOKIE_SAME_SITE:-lax}
+      CSRF_SECRET: ${CSRF_SECRET:-dev_csrf_secret_must_be_32chars_xxxxx}
+      # Frontend (used by CORS policy)
+      FRONTEND_URL: ${FRONTEND_URL:-http://localhost}
+      # Stripe
+      STRIPE_SECRET_KEY: ${STRIPE_SECRET_KEY:-}
+      STRIPE_WEBHOOK_SECRET: ${STRIPE_WEBHOOK_SECRET:-}
+      STRIPE_CURRENCY: ${STRIPE_CURRENCY:-eur}
+      # Rate limiting
+      RATE_LIMIT_WINDOW_MS: ${RATE_LIMIT_WINDOW_MS:-900000}
+      RATE_LIMIT_MAX_AUTH: ${RATE_LIMIT_MAX_AUTH:-20}
+      RATE_LIMIT_MAX_API: ${RATE_LIMIT_MAX_API:-500}
+      # Uploads
+      UPLOAD_MAX_SIZE_MB: ${UPLOAD_MAX_SIZE_MB:-10}
+      UPLOAD_DIR: /app/uploads
+      # Logging
+      LOG_LEVEL: ${LOG_LEVEL:-info}
+      LOG_DIR: /app/logs
+      # Governance
+      BCRYPT_ROUNDS: ${BCRYPT_ROUNDS:-12}
+      VENDOR_RISK_HIGH_THRESHOLD: ${VENDOR_RISK_HIGH_THRESHOLD:-70}
+      VENDOR_RISK_MEDIUM_THRESHOLD: ${VENDOR_RISK_MEDIUM_THRESHOLD:-40}
+      RFQ_SLA_HOURS: ${RFQ_SLA_HOURS:-48}
+      DISPUTE_SLA_HOURS: ${DISPUTE_SLA_HOURS:-72}
+      # Seed control — set to true on first run to populate test accounts
+      RUN_SEEDS: ${RUN_SEEDS:-false}
+    ports:
+      - "3001:3001" # Exposed for direct dev access; remove in production
+    volumes:
+      - uploads_data:/app/uploads
+      - logs_data:/app/logs
+    networks:
+      - nova_network
+    healthcheck:
+      test: [ "CMD-SHELL", "node -e \"require('http').get('http://localhost:3001/health', r => r.statusCode===200?process.exit(0):process.exit(1)).on('error',()=>process.exit(1))\"" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s # Allow time for migrations to complete
+
+  # ---- Nginx Reverse Proxy + Static Frontend ----
+  nginx:
+    image: nginx:alpine
+    container_name: nova_nginx
+    restart: unless-stopped
+    depends_on:
+      api:
+        condition: service_healthy
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ../sfeci-corporate:/usr/share/nginx/html:ro
+    networks:
+      - nova_network
+
+volumes:
+  postgres_data:
+    driver: local
+  uploads_data:
+    driver: local
+  logs_data:
+    driver: local
+
+networks:
+  nova_network:
+    driver: bridge

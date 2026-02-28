@@ -1,0 +1,111 @@
+name: NOVA Platform — Deploy
+
+on:
+  workflow_run:
+    workflows: ["NOVA Platform — CI"]
+    types: [completed]
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Deployment target'
+        required: true
+        default: staging
+        type: choice
+        options: [staging, production]
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}/nova-backend
+
+jobs:
+  deploy-staging:
+    runs-on: ubuntu-latest
+    name: Deploy to Staging
+    if: |
+      (github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success') ||
+      (github.event_name == 'workflow_dispatch' && github.event.inputs.environment == 'staging')
+    environment:
+      name: staging
+      url: ${{ vars.STAGING_URL }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Log in to Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Deploy to Staging via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.STAGING_HOST }}
+          username: ${{ secrets.STAGING_USER }}
+          key: ${{ secrets.STAGING_SSH_KEY }}
+          script: |
+            cd /opt/nova-platform
+            docker-compose pull api
+            docker-compose up -d --no-deps api
+            docker-compose exec -T api ./docker-entrypoint.sh echo "Migrations complete"
+            echo "✅ Staging deployed: $(date)"
+
+      - name: Run smoke tests against staging
+        run: |
+          sleep 10
+          curl -f "${{ vars.STAGING_URL }}/health" || exit 1
+          echo "✅ Staging health check passed"
+
+  deploy-production:
+    runs-on: ubuntu-latest
+    name: Deploy to Production
+    if: github.event_name == 'workflow_dispatch' && github.event.inputs.environment == 'production'
+    environment:
+      name: production
+      url: ${{ vars.PRODUCTION_URL }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Log in to Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Deploy to Production (zero-downtime rolling update)
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.PROD_HOST }}
+          username: ${{ secrets.PROD_USER }}
+          key: ${{ secrets.PROD_SSH_KEY }}
+          script: |
+            cd /opt/nova-platform
+            # Pull new image
+            docker-compose pull api
+            # Rolling restart: scale up new, wait, scale down old
+            docker-compose up -d --no-deps --scale api=2 api
+            sleep 20
+            docker-compose up -d --no-deps --scale api=1 api
+            echo "✅ Production deployed: $(date)"
+
+      - name: Production smoke test
+        run: |
+          sleep 15
+          curl -f "${{ vars.PRODUCTION_URL }}/health" || exit 1
+          echo "✅ Production health check passed"
+
+      - name: Notify deployment
+        if: always()
+        uses: slackapi/slack-github-action@v1.25.0
+        with:
+          payload: |
+            {
+              "text": "${{ job.status == 'success' && '✅' || '❌' }} Production deployment ${{ job.status }}: ${{ github.sha }}"
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        continue-on-error: true

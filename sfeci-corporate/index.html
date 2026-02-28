@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="SFECI - French multinational corporation. Global B2B platform for industrial, energy, medical, and mega projects. European standards, worldwide reach.">
+    <meta name="keywords"
+        content="B2B platform, international trading, RFQ system, industrial projects, European compliance">
+    <title>SFECI - Global B2B Platform | NOVA Smart Solutions</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="security.js"></script>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="navbar-container">
+            <a href="#home" class="navbar-logo">
+                <div class="navbar-logo-icon">SF</div>
+                <span>SFECI</span>
+            </a>
+
+            <ul class="navbar-menu" id="navbarMenu">
+                <li><a href="#home" class="navbar-link active">Home</a></li>
+                <li><a href="#sectors" class="navbar-link">Sectors</a></li>
+                <li><a href="#rfq" class="navbar-link">RFQ System</a></li>
+                <li><a href="#projects" class="navbar-link">Projects</a></li>
+                <li><a href="#partners" class="navbar-link">Partners</a></li>
+                <li><a href="#compliance" class="navbar-link">Compliance</a></li>
+                <li><a href="#news" class="navbar-link">Insights</a></li>
+                <li><a href="#contact" class="navbar-link">Contact</a></li>
+            </ul>
+
+            <div class="navbar-actions">
+                <div class="lang-selector">
+                    <button class="lang-btn active" data-lang="en">EN</button>
+                    <button class="lang-btn" data-lang="fr">FR</button>
+                    <button class="lang-btn" data-lang="ar">AR</button>
+                    <button class="lang-btn" data-lang="zh">中文</button>
+                </div>
+                <a href="#rfq" class="btn btn-primary">Request Quote</a>
+            </div>
+
+            <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-grid"></div>
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span>🌍</span>
+                <span>Trusted by Governments & Enterprises Worldwide</span>
+            </div>
+            <h1>Building the Future of Global B2B Commerce</h1>
+            <p class="hero-subtitle">
+                SFECI connects international enterprises with premium suppliers across Europe, Asia, and Africa.
+                Our NOVA platform delivers compliance-driven solutions for industrial, energy, medical, and mega
+                projects.
+            </p>
+            <div class="hero-actions">
+                <a href="#rfq" class="btn btn-gold btn-large">
+                    <span>Request a Quote</span>
+                    <svg class="btn-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                </a>
+                <a href="#partners" class="btn btn-secondary btn-large">
+                    <span>Become a Partner</span>
+                </a>
+            </div>
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <span class="hero-stat-value">50+</span>
+                    <span class="hero-stat-label">Countries Served</span>
+                </div>
+                <div class="hero-stat">
+                    <span class="hero-stat-value">€2.5B+</span>
+                    <span class="hero-stat-label">Annual Trading Volume</span>
+                </div>
+                <div class="hero-stat">
+                    <span class="hero-stat-value">1000+</span>
+                    <span class="hero-stat-label">Active Partners</span>
+                </div>
+                <div class="hero-stat">
+                    <span class="hero-stat-value">98%</span>
+                    <span class="hero-stat-label">Client Satisfaction</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sectors Section -->
+    <section class="section" id="sectors">
+        <div class="container">
+            <div class="text-center" style="margin-bottom: 4rem;">
+                <span class="badge badge-primary">Our Expertise</span>
+                <h2 style="margin-top: 1rem;">Global Sectors We Serve</h2>
+                <p class="text-large" style="color: var(--color-gray-600); max-width: 700px; margin: 1rem auto;">
+                    Comprehensive solutions across multiple industries with European quality standards
+                </p>
+            </div>
+
+            <div class="grid grid-3">
+                <div class="card">
+                    <div class="card-icon">🏗️</div>
+                    <h3 class="card-title">Industrial & Construction</h3>
+                    <p class="card-description">
+                        Heavy machinery, construction materials, industrial equipment, and infrastructure solutions for
+                        large-scale projects.
+                    </p>
+                    <a href="#" class="card-link">
+                        <span>Explore Sector</span>
+                        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                        </svg>
+                    </a>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">⚡</div>
+                    <h3 class="card-title">Energy & Environment</h3>
+                    <p class="card-description">
+                        Renewable energy systems, smart grids, environmental technologies, and sustainable
+                        infrastructure solutions.
+                    </p>
+                    <a href="#" class="card-link">
+                        <span>Explore Sector</span>
+                        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                        </svg>
+                    </a>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">🏥</div>
+                    <h3 class="card-title">Medical & Pharma</h3>
+                    <p class="card-description">
+                        Medical equipment, pharmaceutical supplies, hospital infrastructure, and healthcare technology
+                        solutions.
+                    </p>
+                    <a href="#" class="card-link">
+                        <span>Explore Sector</span>
+                        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                        </svg>
+                    </a>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">🌾</div>
+                    <h3 class="card-title">Trading & Food</h3>
+                    <p class="card-description">
+                        Agricultural products, food processing equipment, supply chain solutions, and international
+                        commodity trading.
+                    </p>
+                    <a href="#" class="card-link">
+                        <span>Explore Sector</span>
+                        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                        </svg>
+                    </a>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">💻</div>
+                    <h3 class="card-title">Tech & Smart Solutions</h3>
+                    <p class="card-description">
+                        IoT systems, AI integration, smart city technologies, and digital transformation consulting
+                        services.
+                    </p>
+                    <a href="#" class="card-link">
+                        <span>Explore Sector</span>
+                        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                        </svg>
+                    </a>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">🎡</div>
+                    <h3 class="card-title">Mega Projects & Entertainment</h3>
+                    <p class="card-description">
+                        WonderWorld City development, theme parks, entertainment complexes, and large-scale urban
+                        projects.
+                    </p>
+                    <a href="#" class="card-link">
+                        <span>Explore Sector</span>
+                        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RFQ System Section -->
+    <section class="section" id="rfq" style="background: var(--color-gray-50);">
+        <div class="container">
+            <div class="text-center" style="margin-bottom: 4rem;">
+                <span class="badge badge-gold">NOVA Platform</span>
+                <h2 style="margin-top: 1rem;">Smart RFQ System</h2>
+                <p class="text-large" style="color: var(--color-gray-600); max-width: 700px; margin: 1rem auto;">
+                    Submit your request for quotation and connect with verified suppliers worldwide
+                </p>
+            </div>
+
+            <div class="grid grid-2" style="align-items: start;">
+                <div>
+                    <div class="card" style="margin-bottom: 2rem;">
+                        <h3 style="margin-bottom: 1.5rem;">How It Works</h3>
+                        <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                            <div style="display: flex; gap: 1rem;">
+                                <div
+                                    style="width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, var(--color-primary-blue), var(--color-primary-light)); color: white; display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0;">
+                                    1</div>
+                                <div>
+                                    <h4 style="margin-bottom: 0.5rem;">Submit Your Request</h4>
+                                    <p style="color: var(--color-gray-600); margin: 0;">Provide detailed specifications
+                                        and requirements</p>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 1rem;">
+                                <div
+                                    style="width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, var(--color-primary-blue), var(--color-primary-light)); color: white; display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0;">
+                                    2</div>
+                                <div>
+                                    <h4 style="margin-bottom: 0.5rem;">Smart Matching</h4>
+                                    <p style="color: var(--color-gray-600); margin: 0;">Our AI connects you with
+                                        qualified suppliers</p>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 1rem;">
+                                <div
+                                    style="width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, var(--color-primary-blue), var(--color-primary-light)); color: white; display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0;">
+                                    3</div>
+                                <div>
+                                    <h4 style="margin-bottom: 0.5rem;">Receive Quotes</h4>
+                                    <p style="color: var(--color-gray-600); margin: 0;">Compare competitive offers
+                                        within 48 hours</p>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 1rem;">
+                                <div
+                                    style="width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, var(--color-primary-blue), var(--color-primary-light)); color: white; display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0;">
+                                    4</div>
+                                <div>
+                                    <h4 style="margin-bottom: 0.5rem;">Secure Transaction</h4>
+                                    <p style="color: var(--color-gray-600); margin: 0;">Complete your order with full
+                                        compliance</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3 style="margin-bottom: 1.5rem;">Request for Quotation</h3>
+                    <form id="rfqForm">
+                        <div class="form-group">
+                            <label class="form-label">Company Name *</label>
+                            <input type="text" name="company" class="form-input" placeholder="Your company name"
+                                required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Email Address *</label>
+                            <input type="email" name="email" class="form-input" placeholder="company@example.com"
+                                required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Sector *</label>
+                            <select name="sector" class="form-select" required>
+                                <option value="">Select a sector</option>
+                                <option value="industrial">Industrial & Construction</option>
+                                <option value="energy">Energy & Environment</option>
+                                <option value="medical">Medical & Pharma</option>
+                                <option value="trading">Trading & Food</option>
+                                <option value="tech">Tech & Smart Solutions</option>
+                                <option value="mega">Mega Projects & Entertainment</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Project Description *</label>
+                            <textarea name="description" class="form-textarea"
+                                placeholder="Describe your requirements in detail..." required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Attach Documents</label>
+                            <div class="form-file">
+                                <svg width="48" height="48" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                    style="margin: 0 auto 0.5rem; color: var(--color-gray-400);">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                                </svg>
+                                <p style="margin: 0; color: var(--color-gray-600); font-size: 0.875rem;">
+                                    <strong>Click to upload</strong> or drag and drop<br>
+                                    PDF, DOC, XLS (max. 10MB)
+                                </p>
+                                <input type="file" style="display: none;">
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">
+                            <span>Submit RFQ</span>
+                            <svg class="btn-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="section" id="projects">
+        <div class="container">
+            <div class="text-center" style="margin-bottom: 4rem;">
+                <span class="badge badge-primary">Portfolio</span>
+                <h2 style="margin-top: 1rem;">Global Projects & References</h2>
+                <p class="text-large" style="color: var(--color-gray-600); max-width: 700px; margin: 1rem auto;">
+                    Delivering excellence across continents with proven track record
+                </p>
+            </div>
+
+            <div class="grid grid-2">
+                <div class="card">
+                    <span class="badge badge-gold" style="margin-bottom: 1rem;">Mega Project</span>
+                    <h3 class="card-title">WonderWorld City</h3>
+                    <p class="card-description">
+                        A $5 billion integrated entertainment and residential complex spanning 2,000 hectares.
+                        Features theme parks, hotels, shopping districts, and smart city infrastructure.
+                    </p>
+                    <div style="display: flex; gap: 1rem; margin-bottom: 1rem; flex-wrap: wrap;">
+                        <span style="font-size: 0.875rem; color: var(--color-gray-600);">📍 Middle East</span>
+                        <span style="font-size: 0.875rem; color: var(--color-gray-600);">💰 $5B Investment</span>
+                        <span style="font-size: 0.875rem; color: var(--color-gray-600);">📅 2024-2028</span>
+                    </div>
+                    <a href="#" class="card-link">View Project Details</a>
+                </div>
+
+                <div class="card">
+                    <span class="badge badge-primary" style="margin-bottom: 1rem;">Energy</span>
+                    <h3 class="card-title">Solar Farm Network - Egypt</h3>
+                    <p class="card-description">
+                        500MW solar energy infrastructure project supplying renewable power to 200,000 households.
+                        Complete turnkey solution with European technology partners.
+                    </p>
+                    <div style="display: flex; gap: 1rem; margin-bottom: 1rem; flex-wrap: wrap;">
+                        <span style="font-size: 0.875rem; color: var(--color-gray-600);">📍 Egypt</span>
+                        <span style="font-size: 0.875rem; color: var(--color-gray-600);">💰 €450M</span>
+                        <span style="font-size: 0.875rem; color: var(--color-gray-600);">✅ Completed</span>
+                    </div>
+                    <a href="#" class="card-link">View Project Details</a>
+                </div>
+
+                <div class="card">
+                    <span class="badge badge-primary" style="margin-bottom: 1rem;">Medical</span>
+                    <h3 class="card-title">Hospital Equipment - West Africa</h3>
+                    <p class="card-description">
+                        Comprehensive medical equipment supply for 15 regional hospitals.
+                        Including MRI systems, surgical equipment, and telemedicine infrastructure.
+                    </p>
+                    <div style="display: flex; gap: 1rem; margin-bottom: 1rem; flex-wrap: wrap;">
+                        <span style="font-size: 0.875rem; color: var(--color-gray-600);">📍 West Africa</span>
+                        <span style="font-size: 0.875rem; color: var(--color-gray-600);">💰 €120M</span>
+                        <span style="font-size: 0.875rem; color: var(--color-gray-600);">✅ Completed</span>
+                    </div>
+                    <a href="#" class="card-link">View Project Details</a>
+                </div>
+
+                <div class="card">
+                    <span class="badge badge-primary" style="margin-bottom: 1rem;">Industrial</span>
+                    <h3 class="card-title">Smart Factory - China Partnership</h3>
+                    <p class="card-description">
+                        Industrial automation and IoT integration for manufacturing facility.
+                        Joint venture with Chinese technology partners for European market.
+                    </p>
+                    <div style="display: flex; gap: 1rem; margin-bottom: 1rem; flex-wrap: wrap;">
+                        <span style="font-size: 0.875rem; color: var(--color-gray-600);">📍 China-EU</span>
+                        <span style="font-size: 0.875rem; color: var(--color-gray-600);">💰 €85M</span>
+                        <span style="font-size: 0.875rem; color: var(--color-gray-600);">🔄 In Progress</span>
+                    </div>
+                    <a href="#" class="card-link">View Project Details</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partner Portal Section -->
+    <section class="section" id="partners"
+        style="background: linear-gradient(135deg, var(--color-primary-deep) 0%, var(--color-primary-blue) 100%); color: white;">
+        <div class="container">
+            <div class="text-center" style="margin-bottom: 4rem;">
+                <span class="badge" style="background: rgba(255,255,255,0.2); color: white;">Partnership</span>
+                <h2 style="margin-top: 1rem; color: white;">Join Our Global Network</h2>
+                <p class="text-large" style="color: rgba(255,255,255,0.9); max-width: 700px; margin: 1rem auto;">
+                    Become a verified supplier and access international opportunities
+                </p>
+            </div>
+
+            <div class="grid grid-3">
+                <div class="card"
+                    style="background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2);">
+                    <div class="card-icon" style="background: rgba(255,255,255,0.2);">🌏</div>
+                    <h3 class="card-title" style="color: white;">Global Sourcing</h3>
+                    <p class="card-description" style="color: rgba(255,255,255,0.8);">
+                        Connect with buyers from Europe, Middle East, Africa, and Asia through our verified platform.
+                    </p>
+                </div>
+
+                <div class="card"
+                    style="background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2);">
+                    <div class="card-icon" style="background: rgba(255,255,255,0.2);">✅</div>
+                    <h3 class="card-title" style="color: white;">Verified Status</h3>
+                    <p class="card-description" style="color: rgba(255,255,255,0.8);">
+                        Gain credibility with our comprehensive verification process and quality certifications.
+                    </p>
+                </div>
+
+                <div class="card"
+                    style="background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2);">
+                    <div class="card-icon" style="background: rgba(255,255,255,0.2);">📊</div>
+                    <h3 class="card-title" style="color: white;">Smart Dashboard</h3>
+                    <p class="card-description" style="color: rgba(255,255,255,0.8);">
+                        Manage RFQs, track orders, and analyze performance through our advanced portal.
+                    </p>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="#" class="btn btn-gold btn-large">
+                    <span>Apply as Supplier</span>
+                    <svg class="btn-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Compliance Section -->
+    <section class="section" id="compliance" style="background: var(--color-gray-50);">
+        <div class="container">
+            <div class="text-center" style="margin-bottom: 4rem;">
+                <span class="badge badge-primary">Trust & Security</span>
+                <h2 style="margin-top: 1rem;">Compliance & Quality Standards</h2>
+                <p class="text-large" style="color: var(--color-gray-600); max-width: 700px; margin: 1rem auto;">
+                    European standards, global compliance, complete transparency
+                </p>
+            </div>
+
+            <div class="grid grid-4">
+                <div class="card" style="text-align: center;">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">🇪🇺</div>
+                    <h4 style="margin-bottom: 0.5rem;">GDPR Compliant</h4>
+                    <p style="color: var(--color-gray-600); margin: 0; font-size: 0.875rem;">
+                        Full data protection compliance
+                    </p>
+                </div>
+
+                <div class="card" style="text-align: center;">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">📜</div>
+                    <h4 style="margin-bottom: 0.5rem;">ISO Certified</h4>
+                    <p style="color: var(--color-gray-600); margin: 0; font-size: 0.875rem;">
+                        ISO 9001 & ISO 14001
+                    </p>
+                </div>
+
+                <div class="card" style="text-align: center;">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">🔒</div>
+                    <h4 style="margin-bottom: 0.5rem;">Secure Platform</h4>
+                    <p style="color: var(--color-gray-600); margin: 0; font-size: 0.875rem;">
+                        Bank-level encryption
+                    </p>
+                </div>
+
+                <div class="card" style="text-align: center;">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">⚖️</div>
+                    <h4 style="margin-bottom: 0.5rem;">Legal Transparency</h4>
+                    <p style="color: var(--color-gray-600); margin: 0; font-size: 0.875rem;">
+                        Full contract visibility
+                    </p>
+                </div>
+            </div>
+
+            <div class="card" style="margin-top: 3rem; background: white;">
+                <h3 style="margin-bottom: 1.5rem;">Our Commitment to Excellence</h3>
+                <div class="grid grid-2" style="gap: 2rem;">
+                    <div>
+                        <h4 style="color: var(--color-primary-blue); margin-bottom: 1rem;">🌱 Sustainability</h4>
+                        <p style="color: var(--color-gray-600); margin: 0;">
+                            Carbon footprint tracking, sustainable sourcing practices, and environmental impact
+                            assessments for all major projects.
+                        </p>
+                    </div>
+                    <div>
+                        <h4 style="color: var(--color-primary-blue); margin-bottom: 1rem;">🤝 Ethical Trading</h4>
+                        <p style="color: var(--color-gray-600); margin: 0;">
+                            Fair trade principles, supplier code of conduct, and regular audits to ensure ethical
+                            business practices.
+                        </p>
+                    </div>
+                    <div>
+                        <h4 style="color: var(--color-primary-blue); margin-bottom: 1rem;">🎯 Quality Assurance</h4>
+                        <p style="color: var(--color-gray-600); margin: 0;">
+                            Rigorous quality control processes, third-party inspections, and comprehensive warranty
+                            programs.
+                        </p>
+                    </div>
+                    <div>
+                        <h4 style="color: var(--color-primary-blue); margin-bottom: 1rem;">📋 Documentation</h4>
+                        <p style="color: var(--color-gray-600); margin: 0;">
+                            Complete traceability, digital documentation, and compliance certificates for all
+                            transactions.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- News & Insights Section -->
+    <section class="section" id="news">
+        <div class="container">
+            <div class="text-center" style="margin-bottom: 4rem;">
+                <span class="badge badge-primary">Knowledge Hub</span>
+                <h2 style="margin-top: 1rem;">News & Market Insights</h2>
+                <p class="text-large" style="color: var(--color-gray-600); max-width: 700px; margin: 1rem auto;">
+                    Stay informed with industry trends, market analysis, and innovation updates
+                </p>
+            </div>
+
+            <div class="grid grid-3">
+                <div class="card">
+                    <div
+                        style="width: 100%; height: 200px; background: linear-gradient(135deg, var(--color-primary-light), var(--color-primary-blue)); border-radius: var(--radius-lg); margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: center; font-size: 3rem;">
+                        🌍
+                    </div>
+                    <span class="badge badge-primary" style="margin-bottom: 1rem;">Market Analysis</span>
+                    <h3 class="card-title">Global B2B Trends 2026</h3>
+                    <p class="card-description">
+                        Comprehensive analysis of emerging markets, digital transformation, and cross-border trade
+                        opportunities.
+                    </p>
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: center; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--color-gray-200);">
+                        <span style="font-size: 0.875rem; color: var(--color-gray-500);">Jan 15, 2026</span>
+                        <a href="#" class="card-link">Read More</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div
+                        style="width: 100%; height: 200px; background: linear-gradient(135deg, #10B981, #34D399); border-radius: var(--radius-lg); margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: center; font-size: 3rem;">
+                        🌱
+                    </div>
+                    <span class="badge badge-primary" style="margin-bottom: 1rem;">Sustainability</span>
+                    <h3 class="card-title">Carbon Neutral Supply Chains</h3>
+                    <p class="card-description">
+                        How SFECI is leading the transition to sustainable B2B operations with innovative carbon
+                        tracking solutions.
+                    </p>
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: center; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--color-gray-200);">
+                        <span style="font-size: 0.875rem; color: var(--color-gray-500);">Jan 10, 2026</span>
+                        <a href="#" class="card-link">Read More</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div
+                        style="width: 100%; height: 200px; background: linear-gradient(135deg, var(--color-accent-gold), var(--color-accent-gold-light)); border-radius: var(--radius-lg); margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: center; font-size: 3rem;">
+                        🚀
+                    </div>
+                    <span class="badge badge-gold" style="margin-bottom: 1rem;">Innovation</span>
+                    <h3 class="card-title">NOVA Platform Launch</h3>
+                    <p class="card-description">
+                        Introducing AI-powered matching, VR showrooms, and blockchain-verified transactions to B2B
+                        commerce.
+                    </p>
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: center; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--color-gray-200);">
+                        <span style="font-size: 0.875rem; color: var(--color-gray-500);">Jan 5, 2026</span>
+                        <a href="#" class="card-link">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contact" style="background: var(--color-gray-50);">
+        <div class="container">
+            <div class="text-center" style="margin-bottom: 4rem;">
+                <span class="badge badge-primary">Get in Touch</span>
+                <h2 style="margin-top: 1rem;">Global Offices & Contact</h2>
+                <p class="text-large" style="color: var(--color-gray-600); max-width: 700px; margin: 1rem auto;">
+                    Connect with our teams across Europe, Asia, and Africa
+                </p>
+            </div>
+
+            <div class="grid grid-3">
+                <div class="card">
+                    <div style="font-size: 2.5rem; margin-bottom: 1rem;">🇫🇷</div>
+                    <h3 class="card-title">Paris Headquarters</h3>
+                    <p style="color: var(--color-gray-600); margin-bottom: 1rem;">
+                        15 Avenue des Champs-Élysées<br>
+                        75008 Paris, France
+                    </p>
+                    <p style="color: var(--color-primary-blue); font-weight: 600; margin-bottom: 0.5rem;">
+                        📞 +33 1 23 45 67 89
+                    </p>
+                    <p style="color: var(--color-primary-blue); font-weight: 600;">
+                        ✉️ contact@sfeci.com
+                    </p>
+                </div>
+
+                <div class="card">
+                    <div style="font-size: 2.5rem; margin-bottom: 1rem;">🇨🇳</div>
+                    <h3 class="card-title">Shanghai Office</h3>
+                    <p style="color: var(--color-gray-600); margin-bottom: 1rem;">
+                        Lujiazui Financial District<br>
+                        Shanghai 200120, China
+                    </p>
+                    <p style="color: var(--color-primary-blue); font-weight: 600; margin-bottom: 0.5rem;">
+                        📞 +86 21 1234 5678
+                    </p>
+                    <p style="color: var(--color-primary-blue); font-weight: 600;">
+                        ✉️ asia@sfeci.com
+                    </p>
+                </div>
+
+                <div class="card">
+                    <div style="font-size: 2.5rem; margin-bottom: 1rem;">🇪🇬</div>
+                    <h3 class="card-title">Cairo Office</h3>
+                    <p style="color: var(--color-gray-600); margin-bottom: 1rem;">
+                        Smart Village, Giza<br>
+                        Cairo, Egypt
+                    </p>
+                    <p style="color: var(--color-primary-blue); font-weight: 600; margin-bottom: 0.5rem;">
+                        📞 +20 2 1234 5678
+                    </p>
+                    <p style="color: var(--color-primary-blue); font-weight: 600;">
+                        ✉️ mena@sfeci.com
+                    </p>
+                </div>
+            </div>
+
+            <div class="card"
+                style="margin-top: 3rem; text-align: center; background: linear-gradient(135deg, var(--color-primary-deep), var(--color-primary-blue)); color: white;">
+                <h3 style="color: white; margin-bottom: 1rem;">Schedule a Meeting</h3>
+                <p style="color: rgba(255,255,255,0.9); margin-bottom: 2rem;">
+                    Book a consultation with our international business development team
+                </p>
+                <a href="#book-meeting" class="btn btn-gold btn-large btn-book-meeting">
+                    <span>Book Meeting</span>
+                    <svg class="btn-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <div class="navbar-logo-icon">SF</div>
+                        <span>SFECI</span>
+                    </div>
+                    <p class="footer-description">
+                        French multinational corporation delivering premium B2B solutions across industrial, energy,
+                        medical,
+                        and technology sectors. Building the future of global commerce with European standards and
+                        worldwide reach.
+                    </p>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="#about">About SFECI</a></li>
+                        <li><a href="#leadership">Leadership Team</a></li>
+                        <li><a href="#careers">Careers</a></li>
+                        <li><a href="#press">Press & Media</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Solutions</h4>
+                    <ul class="footer-links">
+                        <li><a href="#sectors">All Sectors</a></li>
+                        <li><a href="#rfq">RFQ System</a></li>
+                        <li><a href="#partners">Partner Portal</a></li>
+                        <li><a href="#nova">NOVA Platform</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul class="footer-links">
+                        <li><a href="#news">News & Insights</a></li>
+                        <li><a href="#case-studies">Case Studies</a></li>
+                        <li><a href="#documentation">Documentation</a></li>
+                        <li><a href="#support">Support Center</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul class="footer-links">
+                        <li><a href="#privacy">Privacy Policy</a></li>
+                        <li><a href="#terms">Terms of Service</a></li>
+                        <li><a href="#gdpr">GDPR Compliance</a></li>
+                        <li><a href="#cookies">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p class="footer-copyright">
+                    © 2026 SFECI. All rights reserved. Registered in France.
+                </p>
+                <div class="footer-social">
+                    <a href="#" class="social-link" aria-label="LinkedIn">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                        </svg>
+                    </a>
+                    <a href="#" class="social-link" aria-label="Twitter">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z" />
+                        </svg>
+                    </a>
+                    <a href="#" class="social-link" aria-label="YouTube">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="api.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

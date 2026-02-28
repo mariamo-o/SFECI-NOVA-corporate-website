@@ -1,0 +1,14 @@
+# NOVA Backend — .gitignore
+node_modules/
+.env
+*.log
+logs/
+uploads/
+dist/
+coverage/
+.nyc_output/
+*.pem
+*.key
+*.cert
+.DS_Store
+Thumbs.db
