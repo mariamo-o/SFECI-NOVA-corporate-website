@@ -1,6 +1,21 @@
-# SFECI NOVA Platform — Operations & Deployment Guide
+<div align="center">
+  <img src="https://img.shields.io/badge/SFECI-NOVA_Platform-0A192F?style=for-the-badge&logo=appveyor" alt="NOVA Platform" />
+  <h1>🌍 NOVA Platform — Executive Workspace</h1>
+  
+  <p>
+    <b>A Secure, Scalable, AI-Driven International B2B & Dropshipping Trade Infrastructure</b>
+  </p>
 
-> **Master Workspace Documentation for deploying and operating the complete NOVA Platform (Frontend + Backend).**
+  <div>
+    <img src="https://img.shields.io/badge/Status-Production_Ready-success?style=flat-square" alt="Status" />
+    <img src="https://img.shields.io/badge/Stack-Node.js_|_PostgreSQL-339933?style=flat-square&logo=node.js" alt="Stack" />
+    <img src="https://img.shields.io/badge/Security-OWASP_Top_10-EA2027?style=flat-square&logo=owasp" alt="Security" />
+    <img src="https://img.shields.io/badge/Docker-Enabled-2496ED?style=flat-square&logo=docker" alt="Docker" />
+  </div>
+  <br/>
+</div>
+
+> ⚡ **Master Workspace Documentation** for deploying and operating the complete NOVA ecosystem.
 
 This workspace contains two distinct repositories designed to run together via Docker:
 1. `nova-backend/` (Node.js API + PostgreSQL)
@@ -124,4 +139,19 @@ To easily monitor the system while in operation, check these endpoints from your
 | `dependency failed to start: container nova_api is unhealthy` | Usually means the PostgreSQL database didn't start fast enough or port `5432` is blocked. Check `docker logs nova_db`. |
 | API returns `502 Bad Gateway` | The API container (`nova_api`) crashed. View logs with `cd nova-backend && docker logs nova_api`. |
 | Migrations throw `relation already exists` | The database was partially migrated. Reset it with `docker-compose down -v` and run again. |
-| Cannot Login (401 Unauthorized) | Ensure you have run the seed command: `docker-compose exec api npm run seed` to create the test accounts. |
+| Cannot Login (`401 Unauthorized`) | Ensure you have run the seed command: `docker-compose exec api npm run seed` to create the test accounts. |
+
+---
+
+<div align="center">
+  <img src="https://img.shields.io/badge/Engineered_for-Scale-0A192F?style=for-the-badge" alt="Scale" />
+  <img src="https://img.shields.io/badge/Secured_by-Design-EA2027?style=for-the-badge" alt="Secure" />
+  <img src="https://img.shields.io/badge/Powered_by-AI-8A2BE2?style=for-the-badge" alt="AI" />
+  
+  <br/><br/>
+  
+  <p>
+    <i>© 2026 SFECI NOVA Trade Infrastructure. All rights reserved.</i><br/>
+    <i>Confidential and Proprietary. For internal/devops use only.</i>
+  </p>
+</div>
