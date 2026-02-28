@@ -630,30 +630,6 @@ sfeci-corporate/               ← Frontend (Vanilla HTML/CSS/JS)
 
 ---
 
-## Production Readiness Checklist
-
-> The following must ALL be checked before production deployment is authorized.
-
-- [ ] Backend deployed to production environment
-- [ ] Database operational with backups configured
-- [ ] TLS/SSL certificates installed and HTTPS enforced
-- [ ] Security audit / penetration test passed
-- [ ] Secrets rotated and managed via Vault or cloud Secrets Manager
-- [ ] AI governance framework active
-- [ ] Payment engine tested with live transactions
-- [ ] Marketplace liquidity thresholds met
-- [ ] SLAs enforced with monitoring alerts
-- [ ] CI/CD pipeline operational
-- [ ] Disaster recovery plan tested
-- [ ] Monitoring and alerting live (logs, metrics, traces)
-
-**Required Sign-Off:**
-- [ ] Lead Developer
-- [ ] Security Auditor
-- [ ] Compliance Officer
-
----
-
 *NOVA Platform — SFECI B2B Trade Infrastructure*  
 *© 2026 SFECI. All rights reserved. Registered in France.*  
 
