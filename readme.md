@@ -110,16 +110,6 @@ The platform is fully configured via `.env` files. Inside the `nova-backend/` fo
 
 ---
 
-## 🛠️ Modifying the UI (Frontend Development)
-
-If you need to make changes to the visual interface:
-
-1. Edit files inside `/sfeci-corporate/` (`index.html`, `index.css`, `script.js`).
-2. **You do NOT need to restart Docker.** The docker-compose stack maps this folder directly into the Nginx container as a read-only volume (`/usr/share/nginx/html:ro`).
-3. Simply save your files and **Refresh your browser**.
-
----
-
 ## 🩺 System Observability
 
 The platform exports real-time health and metrics data. 
